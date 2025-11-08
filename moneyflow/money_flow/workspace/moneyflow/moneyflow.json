@@ -1,0 +1,46 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"bi1fyvpiqO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">MoneyFlow</span>\",\"col\":12}},{\"id\":\"gbRAs5UbEJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Transaction\",\"col\":6}},{\"id\":\"tkh4IxcIZR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Medical Data\",\"col\":6}}]",
+ "creation": "2025-11-08 15:20:15.559955",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "expenses",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "MoneyFlow",
+ "links": [],
+ "modified": "2025-11-08 15:24:18.028965",
+ "modified_by": "Administrator",
+ "module": "Money Flow",
+ "name": "MoneyFlow",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 28.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Transaction",
+   "link_to": "Transaction",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Medical Data",
+   "link_to": "Medical Data",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "MoneyFlow"
+}
