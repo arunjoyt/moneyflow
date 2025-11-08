@@ -19,7 +19,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-07 17:32:23.048537",
+ "modified": "2025-11-08 15:32:00.209314",
  "modified_by": "Administrator",
  "module": "Money Flow",
  "name": "Transaction Category",
@@ -35,6 +35,17 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Money Flow User",
    "share": 1,
    "write": 1
   }
