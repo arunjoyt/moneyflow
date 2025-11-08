@@ -43,13 +43,13 @@
    "in_list_view": 1,
    "label": "User",
    "options": "User",
-   "reqd": 1
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-08 15:31:11.546367",
+ "modified": "2025-11-08 16:06:08.841919",
  "modified_by": "Administrator",
  "module": "Money Flow",
  "name": "Medical Data",
