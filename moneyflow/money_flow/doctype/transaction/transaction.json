@@ -1,49 +1,55 @@
 {
  "actions": [],
- "autoname": "autoincrement",
  "creation": "2025-11-07 16:15:21.115841",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "date",
+  "transaction_date",
   "transaction_type",
-  "transaction_category",
+  "description",
   "amount",
-  "description"
+  "notes"
  ],
  "fields": [
   {
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "label": "Transaction Date"
-  },
-  {
    "fieldname": "transaction_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Transaction Type",
-   "options": "Expense\nIncome"
-  },
-  {
-   "fieldname": "transaction_category",
-   "fieldtype": "Link",
-   "label": "Transaction Category",
-   "options": "Transaction Category"
+   "options": "Expense\nIncome",
+   "reqd": 1
   },
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount"
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
   },
   {
    "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "transaction_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Transaction Date",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-08 15:32:23.749256",
+ "modified": "2025-12-02 16:33:46.447009",
  "modified_by": "Administrator",
  "module": "Money Flow",
  "name": "Transaction",

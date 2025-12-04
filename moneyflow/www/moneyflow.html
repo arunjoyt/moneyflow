@@ -1,0 +1,122 @@
+{% extends "templates/web.html" %} {% block page_content %}
+<div>
+        <section>
+        <form id="createTransactionForm">
+            <fieldset>
+            <input type="date" id="transaction_date" placeholder="Transaction Date" required>
+            <label for="transaction_type_income">Income</label>
+            <input type="radio" id="transaction_type_income" name="transaction_type" value="Income" required>
+            <label for="transaction_type_expense">Expense</label>
+            <input type="radio" id="transaction_type_expense" name="transaction_type" value="Expense" required>
+            <input type="text" id="description" placeholder="Description" required>
+            <input type="number" id="amount" placeholder="Amount" required>
+            <input type="text" id="notes" placeholder="Notes">
+            </fieldset>
+            <button type="submit">Create Transaction</button>
+        </form>
+    <div id="result"></div>
+    </section>
+	<section>
+		<h3>Transactions</h3>
+	</section>
+	<section>
+        <div id="transactionsList">Loading transactions...</div>
+	</section>
+    <br>
+
+</div>
+<script>
+document.getElementById("createTransactionForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const transaction_date = document.getElementById("transaction_date").value;
+    const transaction_type_input = document.querySelector('input[name="transaction_type"]:checked');
+    const transaction_type = transaction_type_input ? transaction_type_input.value : null;
+    const description = document.getElementById("description").value.trim();
+    const amountRaw = document.getElementById("amount").value;
+    const amount = amountRaw ? parseFloat(amountRaw) : null;
+    const notes = document.getElementById("notes").value.trim();
+
+    if (!transaction_type) {
+        document.getElementById("result").innerHTML = "<span style='color:red'>Error: select a transaction type</span>";
+        return;
+    }
+
+    const payload = {
+        transaction_date: transaction_date,
+        transaction_type: transaction_type,
+        description: description,
+        amount: amount,
+        notes: notes
+    };
+
+    const res = await fetch("/api/resource/Transaction", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (data && data.data) {
+        document.getElementById("result").innerHTML =
+            "Transaction Created: <b>" + data.data.name + "</b>";
+        document.getElementById("createTransactionForm").reset();
+        if (typeof loadTransactions === 'function') {
+            loadTransactions();
+        }
+    } else {
+        const msg = data && data._server_messages ? data._server_messages : (data && data.message ? data.message : JSON.stringify(data));
+        document.getElementById("result").innerHTML =
+            "<span style='color:red'>Error: " + msg + "</span>";
+    }
+});
+
+async function loadTransactions() {
+    const listEl = document.getElementById('transactionsList');
+    listEl.innerHTML = 'Loading transactions...';
+    try {
+        const fields = encodeURIComponent('["transaction_date","transaction_type","description","amount","notes"]');
+        const res = await fetch(`/api/resource/Transaction?fields=${fields}&limit_page_length=100`);
+        const json = await res.json();
+
+        if (!json || !json.data || json.data.length === 0) {
+            listEl.innerHTML = '<p>No transactions yet.</p>';
+            return;
+        }
+
+        listEl.innerHTML = '';
+        json.data.sort((a, b) => {
+            const dateA = new Date(a.transaction_date);
+            const dateB = new Date(b.transaction_date);
+            return dateB - dateA;
+        });
+        json.data.forEach(t => {
+            const p = document.createElement('p');
+            const date = t.transaction_date || '';
+            const type = t.transaction_type || '';
+            const desc = t.description || '';
+            const amt = t.amount != null ? t.amount : '';
+            const notes = t.notes || '';
+            p.textContent = `${date} | ${type} | ${desc} | ${amt} | ${notes}`;
+            listEl.appendChild(p);
+        });
+    } catch (err) {
+        listEl.innerHTML = "<span style='color:red'>Could not load transactions</span>";
+        console.error(err);
+    }
+}
+
+// Load transactions on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadTransactions);
+} else {
+    loadTransactions();
+}
+</script>
+
+{% endblock %}
