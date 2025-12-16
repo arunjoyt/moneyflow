@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"bi1fyvpiqO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">MoneyFlow</span>\",\"col\":12}},{\"id\":\"gbRAs5UbEJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Transaction\",\"col\":6}},{\"id\":\"tkh4IxcIZR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Medical Data\",\"col\":6}}]",
+ "content": "[{\"id\":\"bi1fyvpiqO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">MoneyFlow</span>\",\"col\":12}},{\"id\":\"gbRAs5UbEJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Transaction\",\"col\":6}},{\"id\":\"DbuEBNDwW9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Web Page\",\"col\":3}},{\"id\":\"tkh4IxcIZR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Medical Data\",\"col\":6}},{\"id\":\"rZ36miUx-_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Web Form\",\"col\":3}}]",
  "creation": "2025-11-08 15:20:15.559955",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "MoneyFlow",
  "links": [],
- "modified": "2025-11-08 15:24:18.028965",
+ "modified": "2025-12-16 15:46:15.081238",
  "modified_by": "Administrator",
  "module": "Money Flow",
  "name": "MoneyFlow",
@@ -32,6 +32,20 @@
    "link_to": "Transaction",
    "stats_filter": "[]",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Web Page",
+   "type": "URL",
+   "url": "/moneyflow"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Web Form",
+   "type": "URL",
+   "url": "/moneyflow-form/list"
   },
   {
    "color": "Grey",

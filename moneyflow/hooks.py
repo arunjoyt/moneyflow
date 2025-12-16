@@ -249,4 +249,10 @@ fixtures = [
             "name": ["in", ["Money Flow User",]]
         }
     },
+    {
+        "doctype": "Workspace",
+        "filters": {
+            "name": ["in", ["MoneyFlow",]]
+        }
+    },
 ]
